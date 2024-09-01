@@ -1,8 +1,8 @@
 # Backend Project Challenge from Roadmap.sh
- For more details about this project, visit the Task Tracker Project Roadmap. https://roadmap.sh/projects/task-tracker
+
+For more details about this project, visit the [Task Tracker Project Roadmap.] (https://roadmap.sh/projects/task-tracker)
 
 # Task Tracker
-
 
 ## Overview
 
@@ -37,5 +37,3 @@ cd task-tracker
 ```bash
 node index.js
 ```
-
-
