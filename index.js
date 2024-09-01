@@ -140,7 +140,7 @@ function deleteTask(id) {
     const tasks = readTasks();
     const newTask = tasks.filter((task) => task.id !== parseInt(id))
     if (newTask.length < tasks.length) {
-        writeTasks(tasks);
+        writeTasks(newTask);
         console.log(`${colors.green}Task ID: ${id} deleted successfully! ${colors.reset}`);
     } else {
         console.log(`${colors.red}Task  ID : ${id} not found. Please provide valid task ID. ${colors.reset}`);
@@ -197,7 +197,7 @@ if (arguments.includes("add")) {
         markTaskCompleted(id);
     }
 } else {
-    console.log(`${colors.magenta} Usage: node index.js <command> [arguments] ${colors.reset}`);
+    console.log(`${colors.magenta} Usage: <command> [arguments] ${colors.reset}`);
     console.log(`${colors.magenta} Commands: ${colors.reset}`);
     console.log(`${colors.yellow} - add <description>: Add a new task ${colors.reset}`);
     console.log(`${colors.yellow} - list [status]: List all tasks or tasks with a specific status (to-do, in-progress, done) ${colors.reset}`);
