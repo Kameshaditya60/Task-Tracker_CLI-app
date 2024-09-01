@@ -6,6 +6,8 @@ const path = require('node:path'); // path is also built in Node.js Module, the 
 const tasksFilePath = path.join(__dirname, 'tasks.json');
 // yha tasks.json ki path ko tasksFilePath variable me store karaye hai 
 
+
+
 const colors = {
     magenta: '\x1b[35m',
     green: '\x1b[32m',
@@ -42,7 +44,10 @@ function writeTasks(tasks) {
 
 // Function, which get unique ID for task
 function getNextId(tasks) {
-    const ids = tasks.map((task) => task.id);  //Saare tasks ke IDs ko ek nayi array 'ids' mein store karta hai
+    if (tasks.length === 0) {
+        return 1;
+    }
+    const ids = tasks.map((task) => task.id);  //Saare tasks ke IDs ko ek nayi array 'ids' mein store karta hai  ids = [1,2,3]
     return ids.length >= 0 ? Math.max(...ids) + 1 : 1; //Sabse bada ID nikal ke uska agla ID return karna, ya agar koi task nahi hai to '1' return karna.
 }
 
