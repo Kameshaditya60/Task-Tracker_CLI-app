@@ -1,0 +1,32 @@
+[
+   {
+      "id": null,
+      "description": "buy milk",
+      "completed": false,
+      "inProgress": false
+   },
+   {
+      "id": 1,
+      "description": "hello",
+      "completed": true,
+      "inProgress": false
+   },
+   {
+      "id": 2,
+      "description": "want milk",
+      "completed": false,
+      "inProgress": true
+   },
+   {
+      "id": 3,
+      "description": "attend wedding receiption",
+      "completed": false,
+      "inProgress": false
+   },
+   {
+      "id": 4,
+      "description": "shfkjahf",
+      "completed": false,
+      "inProgress": false
+   }
+]
