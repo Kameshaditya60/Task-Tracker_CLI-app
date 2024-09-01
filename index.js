@@ -207,4 +207,70 @@ if (arguments.includes("add")) {
     console.log(`${colors.yellow} - mark-done <id>: Mark a task as completed ${colors.reset}`);
 
 }
- 
+
+
+// readLine module ki help se terminal se hi  input le sakte hai output display kra sakte hai 
+// to isse baar bar node index.js run nhi karna padega 
+const readline = require('node:readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    prompt: 'Task-Tracker> '
+});
+
+rl.prompt(); // Display the prompt
+
+rl.on('line', (input) => {
+    const args = input.trim().split(' '); // Split input into arguments
+    const command = args[0];
+    const restArgs = args.slice(1);
+
+    // The logic for each command, similar to what you already have
+    if (command === "add") {
+        const taskDescription = restArgs.join(' ');
+        if (!taskDescription) {
+            console.log(`${colors.red}Please provide a task description. ${colors.reset}`);
+        } else {
+            addTask(taskDescription);
+        }
+    } else if (command === "list") {
+        const status = restArgs[0]; // "done", "to-do", or "in-progress" (optional)
+        listTasks(status);
+    } else if (command === "update") {
+        const id = restArgs[0];
+        const newDescription = restArgs.slice(1).join(' ');
+        if (!id || !newDescription) {
+            console.log(`${colors.red}Please provide a task ID and new description. ${colors.reset}`);
+        } else {
+            updateTask(id, newDescription);
+        }
+    } else if (command === "delete") {
+        const id = restArgs[0];
+        if (!id) {
+            console.log(`${colors.red}Please provide a task ID. ${colors.reset}`);
+        } else {
+            deleteTask(id);
+        }
+    } else if (command === "mark-in-progress") {
+        const id = restArgs[0];
+        if (!id) {
+            console.log(`${colors.red}Please provide a task ID. ${colors.reset}`);
+        } else {
+            markTaskInProgress(id);
+        }
+    } else if (command === "mark-done") {
+        const id = restArgs[0];
+        if (!id) {
+            console.log(`${colors.red}Please provide a task ID. ${colors.reset}`);
+        } else {
+            markTaskCompleted(id);
+        }
+    } else {
+        console.log(`${colors.red}Invalid command. Type 'help' for a list of commands.${colors.reset}`);
+    }
+
+    rl.prompt(); // Show the prompt again after each command
+}).on('close', () => {
+    console.log('Exiting Task Tracker...');
+    process.exit(0);
+});
